@@ -9,6 +9,16 @@ import SkinAnalysis from "@/components/services/SkinAnalysis";
 import PregnancyAssessment from "@/components/services/PregnancyAssessment";
 import * as z from "zod";
 
+// Define the pregnancy form schema
+export const pregnancyFormSchema = z.object({
+  age: z.string().min(1, "Age is required"),
+  systolicBP: z.string().min(1, "Systolic BP is required"),
+  diastolicBP: z.string().min(1, "Diastolic BP is required"),
+  bloodSugar: z.string().min(1, "Blood sugar level is required"),
+  bodyTemp: z.string().min(1, "Body temperature is required"),
+  heartRate: z.string().min(1, "Heart rate is required"),
+});
+
 const Index = () => {
   const [selectedService, setSelectedService] = useState<"skin" | "pregnancy" | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
